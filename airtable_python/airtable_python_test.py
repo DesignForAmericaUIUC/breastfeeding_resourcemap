@@ -3,7 +3,7 @@
 
 # library used to get stuff from airtable
 import requests
-import pandas
+import pandas as pd
 
 # construct a url for the airtable we're using
 base_id = ""
