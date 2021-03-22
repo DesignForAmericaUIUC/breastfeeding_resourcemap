@@ -17,6 +17,7 @@ function App() {
         >
           Learn React
         </a>
+        <p> The current time is 0.</p>
       </header>
     </div>
   );
