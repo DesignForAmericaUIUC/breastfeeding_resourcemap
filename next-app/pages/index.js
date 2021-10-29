@@ -1,37 +1,138 @@
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { Box, Button, Typography, useTheme } from "@material-ui/core";
+import {
+  Box,
+  Typography,
+  useTheme,
+  Paper,
+  Grid,
+  Container,
+  Item,
+} from "@material-ui/core";
+import { alpha } from "@material-ui/core/styles/colorManipulator";
 import { useRouter } from "next/router";
 
 import NavBar from "../components/nav/NavBar";
+import FancyButton from "../components/FancyButton";
+import ResourceCard from "../components/ResourceCard";
 
-const Blog = () => {
-  const theme = useTheme();
+const Page = () => {
   const router = useRouter();
+  const theme = useTheme();
+
+  const styles = {
+    paperWithBGImg: {
+      boxShadow: `inset 0 0 0 1000px ${alpha(theme.palette.primary.main, 0.5)}`,
+      minHeight: "30vh",
+      padding: "60px 0px",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      width: "auto",
+      borderRadius: 0,
+      backgroundImage:
+        "url(https://i.pinimg.com/originals/1d/74/e1/1d74e1dbd3c9b57c810362177065e2c7.jpg)",
+    },
+  };
+
+  const ResourceCardInfo = [
+    {
+      title: "1",
+      body: "hello there",
+    },
+    {
+      title: "2",
+      body: "hello again",
+    },
+    {
+      title: "3",
+      body: "hello number 3",
+    },
+    {
+      title: "4",
+      body: "hello number 4",
+    },
+  ];
 
   return (
     <>
-      <CssBaseline />
       <NavBar />
-      <Box
-        p={2}
-        width="auto"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Button
-          variant="contained"
-          style={{
-            backgroundColor: theme.palette.secondary.main,
-            color: theme.palette.common.white,
-          }}
+      <Paper style={styles.paperWithBGImg}>
+        <Box
+          width="500px"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
         >
-          <Typography variant="h5">Find Resources</Typography>
-        </Button>
-      </Box>
+          <Typography
+            variant="h2"
+            align="center"
+            gutterBottom
+            style={{ color: "white" }}
+          >
+            Find breastfeeding resources near you
+          </Typography>
+          <Typography
+            variant="h5"
+            align="center"
+            gutterBottom
+            style={{ color: "white" }}
+          >
+            Explore our map and browse through resources available across
+            Illinois
+          </Typography>
+          <FancyButton
+            text="Find Resources"
+            onClick={() => {
+              router.push("resource-map");
+            }}
+          />
+        </Box>
+      </Paper>
+      <Paper
+        elevation={0}
+        style={{
+          marginTop: "40px",
+          display: "flex",
+          width: "auto",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          display="flex"
+          width="auto"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Typography variant="h4" align="center">
+            What kind of breastfeeding resources are available?
+          </Typography>
+          <Typography variant="subtitle1" align="center" gutterBottom>
+            Learn more about what each resource category means on the resource
+            map.
+          </Typography>
+        </Box>
+        <Box px={4} my={4} width="80%" maxWidth="1200px" minWidth="400px">
+          <Grid container spacing={6}>
+            {ResourceCardInfo.map((card) => (
+              <>
+                <Grid item xs={6}>
+                  <Box>
+                    <ResourceCard {...card} onClick={() => {}} />
+                  </Box>
+                </Grid>
+              </>
+            ))}
+          </Grid>
+        </Box>
+      </Paper>
     </>
   );
 };
 
-export default Blog;
+export default Page;
