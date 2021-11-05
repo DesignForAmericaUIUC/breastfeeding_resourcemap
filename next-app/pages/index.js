@@ -80,11 +80,11 @@ const Page = () => {
             gutterBottom
             style={{ color: "white" }}
           >
-            Explore our map and browse through resources available across
+            explore our map and browse through resources available across
             Illinois
           </Typography>
           <FancyButton
-            text="Find Resources"
+            text="find resources"
             onClick={() => {
               router.push("resource-map");
             }}
