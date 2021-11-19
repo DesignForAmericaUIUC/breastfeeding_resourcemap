@@ -15,19 +15,19 @@ const Blog = () => {
       <NavBar />
       <Box
         p={2}
-        width="auto"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
+        width='auto'
+        display='flex'
+        justifyContent='center'
+        alignItems='center'
       >
         <Button
-          variant="contained"
+          variant='contained'
           style={{
             backgroundColor: theme.palette.secondary.main,
             color: theme.palette.common.white,
           }}
         >
-          <Typography variant="h5">Find Resources</Typography>
+          <Typography variant='h5'>Find Resources</Typography>
         </Button>
       </Box>
     </>
