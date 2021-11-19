@@ -31,8 +31,7 @@ const Page = () => {
       alignItems: "center",
       width: "auto",
       borderRadius: 0,
-      backgroundImage:
-        "url(https://i.pinimg.com/originals/1d/74/e1/1d74e1dbd3c9b57c810362177065e2c7.jpg)",
+      backgroundImage: "url(/static/assets/images/Mom baby in group.jpg)",
     },
   };
 
