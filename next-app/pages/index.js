@@ -59,23 +59,23 @@ const Page = () => {
       <NavBar />
       <Paper style={styles.paperWithBGImg}>
         <Box
-          width="500px"
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
+          width='500px'
+          display='flex'
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
         >
           <Typography
-            variant="h2"
-            align="center"
+            variant='h2'
+            align='center'
             gutterBottom
             style={{ color: "white" }}
           >
             Find breastfeeding resources near you
           </Typography>
           <Typography
-            variant="h5"
-            align="center"
+            variant='h5'
+            align='center'
             gutterBottom
             style={{ color: "white" }}
           >
@@ -83,7 +83,7 @@ const Page = () => {
             Illinois
           </Typography>
           <FancyButton
-            text="find resources"
+            text='find resources'
             onClick={() => {
               router.push("resource-map");
             }}
@@ -102,21 +102,21 @@ const Page = () => {
         }}
       >
         <Box
-          display="flex"
-          width="auto"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
+          display='flex'
+          width='auto'
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
         >
-          <Typography variant="h4" align="center">
+          <Typography variant='h4' align='center'>
             What kind of breastfeeding resources are available?
           </Typography>
-          <Typography variant="subtitle1" align="center" gutterBottom>
+          <Typography variant='subtitle1' align='center' gutterBottom>
             Learn more about what each resource category means on the resource
             map.
           </Typography>
         </Box>
-        <Box px={4} my={4} width="80%" maxWidth="1200px" minWidth="400px">
+        <Box px={4} my={4} width='80%' maxWidth='1200px' minWidth='400px'>
           <Grid container spacing={6}>
             {ResourceCardInfo.map((card) => (
               <>
