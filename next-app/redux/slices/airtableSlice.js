@@ -1,6 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const axios = require("axios").default;
+// const axios = require("axios").default;
+
+const app_id = "appYWfvp0fetSB56R";
+const view = "table1";
+const app_key = "REDACTED";
 
 const initialState = {
   data: [],
@@ -9,15 +13,29 @@ const initialState = {
 };
 
 export const fetchData = createAsyncThunk("airtable/fetchData", async () => {
-  const response = await axios.get();
-  return response.data;
+  const airtableRecords = [];
+  fetch(`https://api.airtable.com/v0/${app_id}/${view}?api_key=${app_key}`)
+    .then((response) => response.json())
+    .then((data) => {
+      airtableRecords.concat(data.records);
+      console.log(data.records);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return airtableRecords;
 });
 
 export const addData = createAsyncThunk(
   "airtable/postNewData",
   async (initialPost) => {
-    const response = await axios.post();
-    return response.data;
+    //   const response = await axios
+    //     .post(url, data)
+    //     .then((resp) => console.log(resp))
+    //     .catch((error) => console.log(error));
+
+    //   return response.data;
+    return [];
   }
 );
 
@@ -32,7 +50,7 @@ const airtableSlice = createSlice({
       })
       .addCase(fetchData.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.posts = state.posts.concat(action.payload);
+        state.data = state.data.concat(action.payload);
       })
       .addCase(fetchData.rejected, (state, action) => {
         state.status = "failed";
@@ -44,7 +62,7 @@ const airtableSlice = createSlice({
   },
 });
 
-export const { dataAdded } = airtableSlice.actions;
+// export const { addData, fetchData } = airtableSlice.actions;
 
 export default airtableSlice.reducer;
 
