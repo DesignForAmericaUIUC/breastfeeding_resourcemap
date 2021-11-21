@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
-import userReducer from "./userReducer";
-import airtableReducer from "./airtableReducer";
+import userReducer from "./slices/userSlice";
+import airtableReducer from "./slices/airtableSlice";
 
 const rootReducer = combineReducers({
   user: userReducer,

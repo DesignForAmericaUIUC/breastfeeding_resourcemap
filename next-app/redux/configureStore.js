@@ -3,7 +3,7 @@ import thunkMiddleware from "redux-thunk";
 
 // import monitorReducersEnhancer from "./enhancers/monitorReducers";
 // import loggerMiddleware from "./middleware/logger";
-import rootReducer from "./reducers/rootReducer";
+import rootReducer from "./rootReducer";
 
 export default function configureStore(preloadedState) {
   const middlewares = [thunkMiddleware]; // loggerMiddleware
