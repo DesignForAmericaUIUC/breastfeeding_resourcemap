@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 
 import NavBar from "../components/nav/NavBar";
-import { fetchData } from "../redux/slices/airtableSlice";
+import { fetchData, selectAllEntries } from "../redux/slices/airtableSlice";
 
 const Page = () => {
   const theme = useTheme();
@@ -17,13 +17,13 @@ const Page = () => {
   const airtableData = useSelector((state) => state.airtable.data);
 
   const onFetchDataRequest = async () => {
-    try {
-      await dispatch(fetchData()).unwrap();
-    } catch (err) {
-      console.error("failed to fetch data :(");
-    } finally {
-      console.log("finished");
-    }
+    // try {
+    await dispatch(fetchData()).unwrap();
+    // } catch (err) {
+    //   console.error("failed to fetch data :(");
+    // } finally {
+    //   console.log("finished");
+    // }
   };
 
   return (
@@ -35,7 +35,15 @@ const Page = () => {
         increment
       </Button>
       <Button onClick={onFetchDataRequest}>Fetch Data</Button>
-      Data: {airtableData}
+      Data:
+      {airtableData?.map((record) => {
+        console.log(record);
+        return (
+          <Box key={record.Name}>
+            <Typography>{record.Name}</Typography>
+          </Box>
+        );
+      })}
     </>
   );
 };

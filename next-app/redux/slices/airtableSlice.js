@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// const axios = require("axios").default;
+// require("dotenv").config();
 
 const app_id = "appYWfvp0fetSB56R";
 const view = "table1";
-const app_key = "REDACTED";
+const app_key = process.env.REACT_APP_AIRTABLE_API_KEY;
 
 const initialState = {
   data: [],
@@ -14,11 +14,14 @@ const initialState = {
 
 export const fetchData = createAsyncThunk("airtable/fetchData", async () => {
   const airtableRecords = [];
-  fetch(`https://api.airtable.com/v0/${app_id}/${view}?api_key=${app_key}`)
+  await fetch(
+    `https://api.airtable.com/v0/${app_id}/${view}?api_key=${app_key}`
+  )
     .then((response) => response.json())
     .then((data) => {
-      airtableRecords.concat(data.records);
-      console.log(data.records);
+      data.records.forEach((r) => {
+        airtableRecords.push(r.fields);
+      });
     })
     .catch((error) => {
       console.log(error);
@@ -47,10 +50,11 @@ const airtableSlice = createSlice({
     builder
       .addCase(fetchData.pending, (state, action) => {
         state.status = "loading";
+        state.error = null;
       })
       .addCase(fetchData.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.data = state.data.concat(action.payload);
+        state.data = action.payload;
       })
       .addCase(fetchData.rejected, (state, action) => {
         state.status = "failed";
@@ -66,4 +70,4 @@ const airtableSlice = createSlice({
 
 export default airtableSlice.reducer;
 
-export const selectAllEntries = (state) => state.data;
+export const selectAllEntries = (state) => state.airtable.data;

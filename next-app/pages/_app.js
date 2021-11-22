@@ -5,7 +5,6 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Provider } from "react-redux";
-// import { configureStore } from "@reduxjs/toolkit";
 
 import theme from "../theme";
 import configureStore from "../redux/configureStore";

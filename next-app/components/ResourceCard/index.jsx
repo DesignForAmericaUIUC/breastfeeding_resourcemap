@@ -37,13 +37,16 @@ const ResourceCard = (props) => {
         <CardContent>
           <Typography
             gutterBottom
-            variant="h5"
-            component="div"
+            variant='h5'
+            component='div'
             style={{ color: theme.palette.primary.main }}
           >
             {props.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant='body2'
+            style={{ color: theme.palette.text.secondary }}
+          >
             {props.body}
           </Typography>
         </CardContent>
