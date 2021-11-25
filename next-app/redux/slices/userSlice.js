@@ -1,17 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  fname: "Jay",
-  lname: "Reiter",
-  value: 9,
+  showBanner: true,
+  fetchedAirtableData: false,
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    increment(state, action) {
-      state.value += 1;
+    toggleShowBanner(state, action) {
+      state.showBanner = !state.showBanner;
+    },
+    didFetchAirtableData(state, action) {
+      state.fetchedAirtableData = true;
     },
   },
 });

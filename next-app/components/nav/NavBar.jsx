@@ -1,5 +1,13 @@
-import { Box, Typography, useTheme, Grid, ButtonBase } from "@material-ui/core";
+import {
+  Box,
+  Typography,
+  useTheme,
+  Grid,
+  ButtonBase,
+  IconButton,
+} from "@material-ui/core";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
 
 import { toRouterString } from "./toRouterString";
 
@@ -12,6 +20,9 @@ const NavBar = (props) => {
     { name: "Other Resources" },
     { name: "About" },
   ];
+
+  const showBanner = useSelector((state) => state.user.showBanner);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -71,24 +82,43 @@ const NavBar = (props) => {
         </Grid>
       </Box>
 
-      {!props?.hideBanner && (
+      {!props.hideBanner && showBanner && (
         <Box
           bgcolor={theme.palette.primary.main}
           display='flex'
           justifyContent='center'
           alignItems='center'
           py={2}
-          px={5}
+          style={{ width: "100%" }}
         >
-          <Typography
-            variant='subtitle2'
-            align='center'
-            style={{ color: theme.palette.common.white, fontSize: "14pt" }}
-          >
-            (888) 522-1282 (IDPH Women's Health Line) is a free and confidential
-            resource available to all Illinois women with health-related
-            questions.
-          </Typography>
+          <Grid container justifyContent='center'>
+            <Grid item xs={1} />
+            <Grid item xs={10}>
+              <Typography
+                variant='subtitle2'
+                align='center'
+                style={{ color: theme.palette.common.white, fontSize: "14pt" }}
+              >
+                (888) 522-1282 (IDPH Women's Health Line) is a free and
+                confidential resource available to all Illinois women with
+                health-related questions.
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={1}
+              display='flex'
+              justifyContent='center'
+              alignItems='center'
+            >
+              {/* TODO: make this a nice icon */}
+              <IconButton
+                onClick={() => dispatch({ type: "user/toggleShowBanner" })}
+              >
+                X
+              </IconButton>
+            </Grid>
+          </Grid>
         </Box>
       )}
     </>

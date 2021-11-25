@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // require("dotenv").config();
 
-const app_id = "appYWfvp0fetSB56R";
-const view = "table1";
+const app_id = "appiCULsCusw7tgF7";
+const view = "form-responses";
 const app_key = process.env.REACT_APP_AIRTABLE_API_KEY;
 
 const initialState = {
@@ -29,6 +29,7 @@ export const fetchData = createAsyncThunk("airtable/fetchData", async () => {
   return airtableRecords;
 });
 
+// @TODO: implement me
 export const addData = createAsyncThunk(
   "airtable/postNewData",
   async (initialPost) => {
@@ -65,8 +66,6 @@ const airtableSlice = createSlice({
       });
   },
 });
-
-// export const { addData, fetchData } = airtableSlice.actions;
 
 export default airtableSlice.reducer;
 
