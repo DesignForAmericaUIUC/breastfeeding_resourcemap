@@ -9,6 +9,7 @@ import {
   Chip,
   useTheme,
 } from "@material-ui/core";
+import Link from "next/link";
 
 import CheckIcon from "@material-ui/icons/Check";
 
@@ -85,7 +86,15 @@ const ResourceCard = (props) => {
             )}
           </Box>
           <Box>
-            <Button size='small'>Share</Button>
+            {props.resource["Website"] && (
+              <a
+                target='_blank'
+                href={props.resource["Website"]}
+                style={{ textDecoration: "none", marginRight: "4px" }}
+              >
+                <Button size='small'>Website</Button>
+              </a>
+            )}
             <Button size='small'>Learn More</Button>
           </Box>
         </Box>
