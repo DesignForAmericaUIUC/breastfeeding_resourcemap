@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
+import ClearIcon from "@material-ui/icons/Clear";
 
 import { toRouterString } from "./toRouterString";
 
@@ -85,11 +86,13 @@ const NavBar = (props) => {
       {!props.hideBanner && showBanner && (
         <Box
           bgcolor={theme.palette.primary.main}
-          display='flex'
-          justifyContent='center'
-          alignItems='center'
           py={2}
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
           <Grid container justifyContent='center'>
             <Grid item xs={1} />
@@ -107,15 +110,21 @@ const NavBar = (props) => {
             <Grid
               item
               xs={1}
-              display='flex'
-              justifyContent='center'
-              alignItems='center'
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
-              {/* TODO: make this a nice icon */}
               <IconButton
                 onClick={() => dispatch({ type: "user/toggleShowBanner" })}
+                style={{
+                  padding: "0px",
+                  backgroundColor: "transparent",
+                  color: "white",
+                }}
               >
-                X
+                <ClearIcon />
               </IconButton>
             </Grid>
           </Grid>
