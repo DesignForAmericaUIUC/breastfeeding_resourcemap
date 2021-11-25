@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import {
   Box,
   Button,
   Typography,
   useTheme,
-  Paper,
   OutlinedInput,
   Menu,
   MenuItem,
   FormGroup,
   FormControlLabel,
   Checkbox,
+  IconButton,
+  Tooltip,
 } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
+import SearchIcon from "@material-ui/icons/Search";
+import ClearIcon from "@material-ui/icons/Clear";
 
 import NavBar from "../components/nav/NavBar";
 import { fetchData, selectAllEntries } from "../redux/slices/airtableSlice";
@@ -70,6 +72,7 @@ const FilterMenu = (props) => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
+        onMouseLeave={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
@@ -152,7 +155,6 @@ const Page = () => {
 
   return (
     <>
-      <CssBaseline />
       <NavBar hideBanner />
       <Box
         bgcolor={theme.palette.primary.main}
@@ -175,7 +177,15 @@ const Page = () => {
             fullWidth
             maxRows={1}
             placeholder='Search for resources...'
-            startAdornment={"Search Icon"}
+            startAdornment={
+              <SearchIcon
+                style={{
+                  color: theme.palette.grey[500],
+                  fontSize: "24pt",
+                  marginRight: "8px",
+                }}
+              />
+            }
             style={{
               backgroundColor: "white",
               borderRadius: "16px",
@@ -207,7 +217,24 @@ const Page = () => {
             setSelectedOptions={e.setSelectedOptions}
           />
         ))}
-        {doFiltering && <Button onClick={clearFilters}>Clear Filters</Button>}
+        {doFiltering && (
+          <Tooltip title='Clear Filters' arrow placement='right'>
+            <IconButton
+              onClick={clearFilters}
+              disableRipple
+              style={{ padding: "0px", backgroundColor: "transparent" }}
+            >
+              <ClearIcon
+                style={{
+                  width: "32px",
+                  height: "32px",
+
+                  color: theme.palette.grey[500],
+                }}
+              />
+            </IconButton>
+          </Tooltip>
+        )}
       </Box>
       <Box
         style={{
