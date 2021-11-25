@@ -4,10 +4,10 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
 
-import NavBar from "../components/nav/NavBar";
-import FilterBar from "../components/filter/FilterBar";
-import ResourceCard from "../components/resource/ResourceCard";
-import { fetchData } from "../redux/slices/airtableSlice";
+import NavBar from "../../components/nav/NavBar";
+import FilterBar from "../../components/filter/FilterBar";
+import ResourceCard from "../../components/resource/ResourceCard";
+import { fetchData } from "../../redux/slices/airtableSlice";
 
 const intersectionSize = (A, B) =>
   A && B ? A.filter((e) => B.includes(e)).length : 0;
