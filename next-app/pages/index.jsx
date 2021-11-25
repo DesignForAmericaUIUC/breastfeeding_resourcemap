@@ -116,7 +116,16 @@ const Page = () => {
             map.
           </Typography>
         </Box>
-        <Box px={4} my={4} width='80%' maxWidth='1200px' minWidth='400px'>
+        <Box
+          px={4}
+          my={4}
+          style={{
+            width: "80%",
+            maxWidth: "1200px",
+            minWidth: "400px",
+            backgroundColor: "transparent",
+          }}
+        >
           <Grid container spacing={6}>
             {ResourceCardInfo.map((card) => (
               <>
