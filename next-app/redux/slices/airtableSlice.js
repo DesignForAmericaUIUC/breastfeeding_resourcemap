@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const app_id = "appiCULsCusw7tgF7";
 const view = "form-responses";
-const app_key = process.env.REACT_APP_AIRTABLE_API_KEY;
+const app_key = process.env.NEXT_PUBLIC_AIRTABLE_API_KEY;
 
 const initialState = {
   data: [],
