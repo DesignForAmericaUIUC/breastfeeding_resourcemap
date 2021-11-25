@@ -1,111 +1,17 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Typography,
-  useTheme,
-  OutlinedInput,
-  Menu,
-  MenuItem,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-  IconButton,
-  Tooltip,
-} from "@material-ui/core";
+import { Box, Typography, useTheme, OutlinedInput } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
 import ClearIcon from "@material-ui/icons/Clear";
 
 import NavBar from "../components/nav/NavBar";
+import FilterBar from "../components/filter/FilterBar";
 import { fetchData, selectAllEntries } from "../redux/slices/airtableSlice";
 import { didFetchAirtableData } from "../redux/slices/userSlice";
 
 const intersectionSize = (A, B) =>
   A && B ? A.filter((e) => B.includes(e)).length : 0;
-
-function useForceUpdate() {
-  const [value, setValue] = useState(0); // integer state
-  return () => setValue((value) => value + 1); // update the state to force render
-}
-
-const FilterMenu = (props) => {
-  const theme = useTheme();
-
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const forceUpdate = useForceUpdate();
-
-  return (
-    <div>
-      <Button
-        id='basic-button'
-        aria-controls='basic-menu'
-        aria-haspopup='true'
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-        style={{
-          height: "32px",
-          borderRadius: "16px",
-          border: `1px solid ${
-            props.selectedOptions.length
-              ? theme.palette.secondary.main
-              : theme.palette.grey[300]
-          }`,
-          margin: "0px 8px",
-        }}
-      >
-        <Typography variant='h6' style={{ padding: "0px 8px" }}>
-          {props.title}
-        </Typography>
-      </Button>
-      <Menu
-        id='basic-menu'
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        onMouseLeave={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-      >
-        {props.options.map((e) => (
-          <MenuItem onClick={forceUpdate}>
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={props.selectedOptions.includes(e)}
-                    onChange={() => {
-                      const index = props.selectedOptions.indexOf(e);
-                      if (index > -1) {
-                        props.selectedOptions.splice(index, 1);
-                      } else {
-                        props.selectedOptions.push(e);
-                      }
-                      props.setSelectedOptions([...props.selectedOptions]);
-                    }}
-                    inputProps={{ "aria-label": "controlled" }}
-                    color='secondary'
-                  />
-                }
-                label={e}
-              />
-            </FormGroup>
-          </MenuItem>
-        ))}
-      </Menu>
-    </div>
-  );
-};
 
 const Page = () => {
   const theme = useTheme();
@@ -137,21 +43,7 @@ const Page = () => {
     },
   ];
 
-  const [doFiltering, setDoFiltering] = useState(true);
-  useEffect(
-    () => {
-      // check if any filters are selected; use this to decide if filters should be active
-      let sum = 0;
-      filters.forEach((e) => {
-        sum += e.selectedOptions.length;
-      });
-      setDoFiltering(sum !== 0);
-    },
-    filters.map((e) => e.selectedOptions)
-  );
-  const clearFilters = () => {
-    filters.forEach((e) => e.setSelectedOptions([]));
-  };
+  const [doFiltering, setDoFiltering] = useState(false);
 
   return (
     <>
@@ -199,43 +91,11 @@ const Page = () => {
           />
         </Box>
       </Box>
-      <Box
-        py={1}
-        px={5}
-        style={{
-          backgroundColor: "white",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "left",
-        }}
-      >
-        {filters.map((e) => (
-          <FilterMenu
-            title={e.title}
-            options={e.options}
-            selectedOptions={e.selectedOptions}
-            setSelectedOptions={e.setSelectedOptions}
-          />
-        ))}
-        {doFiltering && (
-          <Tooltip title='Clear Filters' arrow placement='right'>
-            <IconButton
-              onClick={clearFilters}
-              disableRipple
-              style={{ padding: "0px", backgroundColor: "transparent" }}
-            >
-              <ClearIcon
-                style={{
-                  width: "32px",
-                  height: "32px",
-
-                  color: theme.palette.grey[500],
-                }}
-              />
-            </IconButton>
-          </Tooltip>
-        )}
-      </Box>
+      <FilterBar
+        filters={filters}
+        doFiltering={doFiltering}
+        setDoFiltering={setDoFiltering}
+      />
       <Box
         style={{
           display: "flex",
