@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 
 import NavBar from "../components/nav/NavBar";
 import FancyButton from "../components/FancyButton";
-import ResourceCard from "../components/ResourceCard";
+import ResourceInfoCard from "../components/resource/ResourceInfoCard";
 
 const Page = () => {
   const router = useRouter();
@@ -130,7 +130,7 @@ const Page = () => {
               <>
                 <Grid item xs={6}>
                   <Box>
-                    <ResourceCard {...card} onClick={() => {}} />
+                    <ResourceInfoCard {...card} onClick={() => {}} />
                   </Box>
                 </Grid>
               </>

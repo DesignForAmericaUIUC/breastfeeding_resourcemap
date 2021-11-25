@@ -10,7 +10,7 @@ import {
   CardMedia,
 } from "@material-ui/core";
 
-const ResourceCard = (props) => {
+const ResourceInfoCard = (props) => {
   const theme = useTheme();
 
   const [cardElevation, setCardElevation] = useState(3);
@@ -60,4 +60,4 @@ const ResourceCard = (props) => {
   );
 };
 
-export default ResourceCard;
+export default ResourceInfoCard;

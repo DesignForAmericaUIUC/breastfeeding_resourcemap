@@ -3,12 +3,10 @@ import { Box, Typography, useTheme, OutlinedInput } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
-import ClearIcon from "@material-ui/icons/Clear";
 
 import NavBar from "../components/nav/NavBar";
 import FilterBar from "../components/filter/FilterBar";
-import { fetchData, selectAllEntries } from "../redux/slices/airtableSlice";
-import { didFetchAirtableData } from "../redux/slices/userSlice";
+import { fetchData } from "../redux/slices/airtableSlice";
 
 const intersectionSize = (A, B) =>
   A && B ? A.filter((e) => B.includes(e)).length : 0;
