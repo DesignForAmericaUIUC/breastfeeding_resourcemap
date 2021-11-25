@@ -20,6 +20,14 @@ import NavBar from "../components/nav/NavBar";
 import { fetchData, selectAllEntries } from "../redux/slices/airtableSlice";
 import { didFetchAirtableData } from "../redux/slices/userSlice";
 
+const intersectionSize = (A, B) =>
+  A && B ? A.filter((e) => B.includes(e)).length : 0;
+
+function useForceUpdate() {
+  const [value, setValue] = useState(0); // integer state
+  return () => setValue((value) => value + 1); // update the state to force render
+}
+
 const FilterMenu = (props) => {
   const theme = useTheme();
 
@@ -31,11 +39,6 @@ const FilterMenu = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  function useForceUpdate() {
-    const [value, setValue] = useState(0); // integer state
-    return () => setValue((value) => value + 1); // update the state to force render
-  }
 
   const forceUpdate = useForceUpdate();
 
@@ -81,7 +84,7 @@ const FilterMenu = (props) => {
                       } else {
                         props.selectedOptions.push(e);
                       }
-                      props.setSelectedOptions(props.selectedOptions);
+                      props.setSelectedOptions([...props.selectedOptions]);
                     }}
                     inputProps={{ "aria-label": "controlled" }}
                     color='secondary'
@@ -103,6 +106,8 @@ const Page = () => {
 
   const dispatch = useDispatch();
 
+  const forceUpdate = useForceUpdate();
+
   const fetchedAirtableData = useSelector(
     (state) => state.user.fetchedAirtableData
   );
@@ -115,7 +120,7 @@ const Page = () => {
     }
   }, []);
 
-  const [doFiltering, setDoFiltering] = useState(false);
+  const [doFiltering, setDoFiltering] = useState(true);
 
   const [selectedOptions_language, setSelectedOptions_language] = useState([]);
 
@@ -127,6 +132,12 @@ const Page = () => {
       setSelectedOptions: setSelectedOptions_language,
     },
   };
+
+  useEffect(() => {
+    console.log("detected change in selected options");
+    forceUpdate();
+    setDoFiltering(selectedOptions_language.length !== 0);
+  }, [selectedOptions_language]);
 
   return (
     <>
@@ -186,8 +197,25 @@ const Page = () => {
           />
         ))}
       </Box>
-      <Box>
-        
+      <Box
+        style={{
+          display: "flex",
+          justifyContent: "left",
+          flexDirection: "column",
+          backgroundColor: "white",
+        }}
+      >
+        {airtableData
+          .filter(
+            (resource) =>
+              intersectionSize(
+                selectedOptions_language,
+                resource["Languages"]?.split(", ")
+              ) !== 0
+          )
+          .map((resource) => (
+            <Typography>{resource["Resource-Name"]}</Typography>
+          ))}
       </Box>
     </>
   );
