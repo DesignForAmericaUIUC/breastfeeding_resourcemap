@@ -53,7 +53,11 @@ const FilterMenu = (props) => {
         style={{
           height: "32px",
           borderRadius: "16px",
-          border: `1px solid ${theme.palette.grey[300]}`,
+          border: `1px solid ${
+            props.selectedOptions.length
+              ? theme.palette.secondary.main
+              : theme.palette.grey[300]
+          }`,
           margin: "0px 8px",
         }}
       >
@@ -106,8 +110,6 @@ const Page = () => {
 
   const dispatch = useDispatch();
 
-  const forceUpdate = useForceUpdate();
-
   const fetchedAirtableData = useSelector(
     (state) => state.user.fetchedAirtableData
   );
@@ -120,24 +122,33 @@ const Page = () => {
     }
   }, []);
 
-  const [doFiltering, setDoFiltering] = useState(true);
-
   const [selectedOptions_language, setSelectedOptions_language] = useState([]);
 
-  const filters = {
-    language: {
+  const filters = [
+    {
       title: "Language",
+      name: "Languages",
       options: ["English", "Spanish", "Polish"],
       selectedOptions: selectedOptions_language,
       setSelectedOptions: setSelectedOptions_language,
     },
-  };
+  ];
 
-  useEffect(() => {
-    console.log("detected change in selected options");
-    forceUpdate();
-    setDoFiltering(selectedOptions_language.length !== 0);
-  }, [selectedOptions_language]);
+  const [doFiltering, setDoFiltering] = useState(true);
+  useEffect(
+    () => {
+      // check if any filters are selected; use this to decide if filters should be active
+      let sum = 0;
+      filters.forEach((e) => {
+        sum += e.selectedOptions.length;
+      });
+      setDoFiltering(sum !== 0);
+    },
+    filters.map((e) => e.selectedOptions)
+  );
+  const clearFilters = () => {
+    filters.forEach((e) => e.setSelectedOptions([]));
+  };
 
   return (
     <>
@@ -188,14 +199,15 @@ const Page = () => {
           justifyContent: "left",
         }}
       >
-        {Object.keys(filters).map((key) => (
+        {filters.map((e) => (
           <FilterMenu
-            title={filters[key].title}
-            options={filters[key].options}
-            selectedOptions={filters[key].selectedOptions}
-            setSelectedOptions={filters[key].setSelectedOptions}
+            title={e.title}
+            options={e.options}
+            selectedOptions={e.selectedOptions}
+            setSelectedOptions={e.setSelectedOptions}
           />
         ))}
+        {doFiltering && <Button onClick={clearFilters}>Clear Filters</Button>}
       </Box>
       <Box
         style={{
@@ -205,17 +217,18 @@ const Page = () => {
           backgroundColor: "white",
         }}
       >
-        {airtableData
-          .filter(
-            (resource) =>
-              intersectionSize(
-                selectedOptions_language,
-                resource["Languages"]?.split(", ")
-              ) !== 0
-          )
-          .map((resource) => (
-            <Typography>{resource["Resource-Name"]}</Typography>
-          ))}
+        {(!doFiltering
+          ? airtableData
+          : airtableData.filter(
+              (resource) =>
+                intersectionSize(
+                  selectedOptions_language,
+                  resource["Languages"]?.split(", ")
+                ) !== 0
+            )
+        ).map((resource) => (
+          <Typography>{resource["Resource-Name"]}</Typography>
+        ))}
       </Box>
     </>
   );
