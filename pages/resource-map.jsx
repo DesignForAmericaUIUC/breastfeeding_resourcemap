@@ -6,6 +6,7 @@ import SearchIcon from "@material-ui/icons/Search";
 
 import NavBar from "../components/nav/NavBar";
 import FilterBar from "../components/filter/FilterBar";
+import ResourceCard from "../components/resource/ResourceCard";
 import { fetchData } from "../redux/slices/airtableSlice";
 
 const intersectionSize = (A, B) =>
@@ -111,9 +112,10 @@ const Page = () => {
                   resource["Languages"]?.split(", ")
                 ) !== 0
             )
-        ).map((resource) => (
-          <Typography>{resource["Resource-Name"]}</Typography>
-        ))}
+        ).map(
+          (resource) =>
+            resource["Resource-Name"] && <ResourceCard resource={resource} />
+        )}
       </Box>
     </>
   );

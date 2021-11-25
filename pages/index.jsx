@@ -15,6 +15,8 @@ import NavBar from "../components/nav/NavBar";
 import FancyButton from "../components/FancyButton";
 import ResourceInfoCard from "../components/resource/ResourceInfoCard";
 
+import homeImage from "/static/assets/images/Mom baby in group.jpg";
+
 const Page = () => {
   const router = useRouter();
   const theme = useTheme();
@@ -30,7 +32,7 @@ const Page = () => {
       alignItems: "center",
       width: "auto",
       borderRadius: 0,
-      backgroundImage: "url(/static/assets/images/Mom baby in group.jpg)",
+      backgroundImage: `url(${homeImage})`,
     },
   };
 
