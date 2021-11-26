@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography, useTheme, OutlinedInput } from "@material-ui/core";
+import {
+  Box,
+  Typography,
+  Paper,
+  useTheme,
+  OutlinedInput,
+} from "@material-ui/core";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import SearchIcon from "@material-ui/icons/Search";
@@ -36,7 +42,7 @@ const Page = () => {
     {
       title: "Language",
       name: "Languages",
-      options: ["English", "Spanish", "Polish"],
+      options: ["English", "Spanish", "Polish", "Mandarin", "Tagalog"],
       selectedOptions: selectedOptions_language,
       setSelectedOptions: setSelectedOptions_language,
     },
@@ -96,26 +102,42 @@ const Page = () => {
         setDoFiltering={setDoFiltering}
       />
       <Box
+        mt={4}
         style={{
+          width: "100%",
           display: "flex",
           justifyContent: "left",
-          flexDirection: "column",
+          flexDirection: "row",
           backgroundColor: "white",
         }}
       >
-        {(!doFiltering
-          ? airtableData
-          : airtableData.filter(
-              (resource) =>
-                intersectionSize(
-                  selectedOptions_language,
-                  resource["Languages"]?.split(", ")
-                ) !== 0
-            )
-        ).map(
-          (resource) =>
-            resource["Resource-Name"] && <ResourceCard resource={resource} />
-        )}
+        <Paper
+          elevation={0}
+          style={{
+            width: "40%",
+            height: "80vh",
+            overflow: "auto",
+            display: "flex",
+            justifyContent: "left",
+            flexDirection: "column",
+            backgroundColor: "white",
+          }}
+        >
+          {(!doFiltering
+            ? airtableData
+            : airtableData.filter(
+                (resource) =>
+                  intersectionSize(
+                    selectedOptions_language,
+                    resource["Languages"]?.split(", ")
+                  ) !== 0
+              )
+          ).map(
+            (resource) =>
+              resource["Resource-Name"] && <ResourceCard resource={resource} />
+          )}
+        </Paper>
+        <Box style={{ width: "60%", height: "80vh" }}>Map goes here</Box>
       </Box>
     </>
   );
