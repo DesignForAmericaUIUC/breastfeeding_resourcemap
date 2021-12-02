@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-To see the Airtable data on the site, you will need to add the API key as 'NEXT_PUBLIC_AIRTABLE_API_KEY' in a .env file in next-app. Ask Jay for the API key.
+To see the Airtable data on the site, you will need to add the API key as 'NEXT_PUBLIC_AIRTABLE_API_KEY' in a .env file in the base directory. Ask Jay for the API key.
 
 ## Getting Started
 
