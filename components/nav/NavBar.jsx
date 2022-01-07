@@ -28,7 +28,7 @@ const NavBar = (props) => {
   return (
     <>
       <Box bgcolor={theme.palette.grey[100]} py={1} m={0}>
-        <Grid container justifyContent='center' alignItems='center'>
+        <Grid container justifyContent="center" alignItems="center">
           <Grid item xs={3}>
             <ButtonBase
               disableRipple
@@ -37,9 +37,9 @@ const NavBar = (props) => {
                 router.push("/");
               }}
             >
-              <Box display='flex' alignItems='center'>
+              <Box display="flex" alignItems="center">
                 <Typography
-                  variant='h3'
+                  variant="h3"
                   style={{ color: theme.palette.primary.main }}
                 >
                   MilkMap
@@ -49,16 +49,16 @@ const NavBar = (props) => {
           </Grid>
           <Grid item xs={6}>
             <Box
-              display='flex'
-              flexDirection='row'
-              justifyContent='space-around'
-              alignItems='center'
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-around"
+              alignItems="center"
             >
               {tabs.map((tab) => (
                 <Box
-                  width='200px'
-                  display='flex'
-                  justifyContent='center'
+                  width="200px"
+                  display="flex"
+                  justifyContent="center"
                   key={tab.name}
                 >
                   <ButtonBase
@@ -69,7 +69,7 @@ const NavBar = (props) => {
                     }
                   >
                     <Typography
-                      variant='h6'
+                      variant="h6"
                       style={{ color: theme.palette.primary.main }}
                     >
                       {tab.name}
@@ -94,12 +94,12 @@ const NavBar = (props) => {
             alignItems: "center",
           }}
         >
-          <Grid container justifyContent='center'>
+          <Grid container justifyContent="center">
             <Grid item xs={1} />
             <Grid item xs={10}>
               <Typography
-                variant='subtitle2'
-                align='center'
+                variant="subtitle2"
+                align="center"
                 style={{ color: theme.palette.common.white, fontSize: "14pt" }}
               >
                 (888) 522-1282 (IDPH Women's Health Line) is a free and

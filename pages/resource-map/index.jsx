@@ -14,6 +14,7 @@ import NavBar from "../../components/nav/NavBar";
 import FilterBar from "../../components/filter/FilterBar";
 import ResourceCard from "../../components/resource/ResourceCard";
 import { fetchData } from "../../redux/slices/airtableSlice";
+import ResourceMap from "../../components/ResourceMap/ResourceMap";
 
 const intersectionSize = (A, B) =>
   A && B ? A.filter((e) => B.includes(e)).length : 0;
@@ -55,15 +56,15 @@ const Page = () => {
       <NavBar hideBanner />
       <Box
         bgcolor={theme.palette.primary.main}
-        display='flex'
-        flexDirection='column'
-        justifyContent='center'
-        alignItems='center'
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
         style={{ width: "100%", marginBottom: "32px" }}
       >
         <Typography
-          variant='h2'
-          align='center'
+          variant="h2"
+          align="center"
           style={{ color: "white", paddingTop: "20px" }}
         >
           Find resources near you
@@ -73,7 +74,7 @@ const Page = () => {
             autoFocus
             fullWidth
             maxRows={1}
-            placeholder='Search for resources...'
+            placeholder="Search for resources..."
             startAdornment={
               <SearchIcon
                 style={{
@@ -137,7 +138,10 @@ const Page = () => {
               resource["Resource-Name"] && <ResourceCard resource={resource} />
           )}
         </Paper>
-        <Box style={{ width: "60%", height: "80vh" }}>Map goes here</Box>
+        <Box style={{ width: "60%", height: "80vh" }}>
+          Map goes here
+          <ResourceMap />
+        </Box>
       </Box>
     </>
   );
