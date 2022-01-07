@@ -38,15 +38,23 @@ const ResourceMap = (props) => {
     const nav = new mapboxgl.NavigationControl();
     map.current.addControl(nav, "top-right");
 
-    // allows geolocating
+    // add geolocator (uses browser's API)
     const locator = new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true,
       },
       trackUserLocation: true,
       showUserHeading: true,
+      fitBoundsOptions: {
+        maxZoom: 11,
+      },
     });
     map.current.addControl(locator);
+
+    // once the map is loaded, trigger the locator to center it on the user
+    map.current.on("load", () => {
+      locator.trigger();
+    });
   });
 
   // update coordinates on map pan
