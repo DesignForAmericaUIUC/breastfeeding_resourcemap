@@ -36,11 +36,19 @@ const ResourceMap = (props) => {
     });
   });
 
+  const [cursorStyle, setCursorStyle] = useState("grab");
+
   return (
-    <>
+    <Box
+      style={{
+        cursor: cursorStyle,
+      }}
+      onMouseDown={() => setCursorStyle("grabbing")}
+      onMouseUp={() => setCursorStyle("grab")}
+    >
       Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       <div ref={mapContainer} style={{ height: "80vh" }} />
-    </>
+    </Box>
   );
 };
 
