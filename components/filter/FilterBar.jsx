@@ -38,6 +38,7 @@ const FilterBar = (props) => {
         display: "flex",
         justifyContent: "left",
         alignItems: "start",
+        flexDirection: "column",
       }}
     >
       <Box
