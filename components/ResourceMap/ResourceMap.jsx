@@ -7,6 +7,7 @@ import {
   Button,
 } from "@material-ui/core";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import "mapbox-gl/dist/mapbox-gl.css";
 
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
@@ -33,6 +34,19 @@ const ResourceMap = (props) => {
       center: [lng, lat],
       zoom: zoom,
     });
+
+    const nav = new mapboxgl.NavigationControl();
+    map.current.addControl(nav, "top-right");
+
+    // allows geolocating
+    const locator = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true,
+      },
+      trackUserLocation: true,
+      showUserHeading: true,
+    });
+    map.current.addControl(locator);
   });
 
   // update coordinates on map pan
@@ -51,7 +65,7 @@ const ResourceMap = (props) => {
     <Box style={{ position: "relative" }}>
       <Box style={{ position: "absolute", top: "8px", right: "8px" }}>
         {/* Longitude: {lng} | Latitude: {lat} | Zoom: {zoom} */}
-        <IconButton
+        {/* <IconButton
           variant="contained"
           onClick={() => setZoom(map.current.getZoom() + 1)}
           style={{
@@ -75,7 +89,7 @@ const ResourceMap = (props) => {
           }}
         >
           <RemoveIcon />
-        </IconButton>
+        </IconButton> */}
       </Box>
       <Box
         style={{
