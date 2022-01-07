@@ -139,7 +139,6 @@ const Page = () => {
           )}
         </Paper>
         <Box style={{ width: "60%", height: "80vh" }}>
-          Map goes here
           <ResourceMap />
         </Box>
       </Box>
