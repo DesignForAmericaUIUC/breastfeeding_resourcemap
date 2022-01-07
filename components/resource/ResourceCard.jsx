@@ -41,9 +41,9 @@ const ResourceCard = (props) => {
     >
       <Card style={{ width: "500px", borderRadius: "16px" }}>
         <CardMedia
-          component='img'
-          height='110'
-          image='/static/assets/images/smileys.jpg'
+          component="img"
+          height="110"
+          image="/static/assets/images/smileys.jpg"
           alt={props.resource["Resource-Name"]}
         />
         <CardContent>
@@ -54,23 +54,23 @@ const ResourceCard = (props) => {
               flexDirection: "column",
             }}
           >
-            <Typography variant='h5' component='div' align='left'>
+            <Typography variant="h5" component="div" align="left">
               {props.resource["Resource-Name"]}
             </Typography>
             {props.resource["Address"] && (
               <Box mb={1} style={{ display: "flex", justifyContent: "left" }}>
                 <Typography
-                  variant='subtitle'
+                  variant="subtitle"
                   style={{
                     color: theme.palette.grey[600],
                   }}
-                  align='left'
+                  align="left"
                 >
                   {props.resource["Address"]}
                 </Typography>
               </Box>
             )}
-            <Typography variant='body2' align='left' color='text.secondary'>
+            <Typography variant="body2" align="left" color="text.secondary">
               {getTextPreview(props.resource["Resource-Description"], 20)}
             </Typography>
           </Box>
@@ -90,11 +90,11 @@ const ResourceCard = (props) => {
                   icon={
                     <CheckIcon
                       style={{ color: theme.palette.secondary.main }}
-                      fontSize='small'
+                      fontSize="small"
                     />
                   }
-                  label='Free'
-                  variant='outlined'
+                  label="Free"
+                  variant="outlined"
                   style={{ marginRight: "4px" }}
                 />
               )}
@@ -103,11 +103,11 @@ const ResourceCard = (props) => {
                   icon={
                     <CheckIcon
                       style={{ color: theme.palette.secondary.main }}
-                      fontSize='small'
+                      fontSize="small"
                     />
                   }
-                  label='Always Open'
-                  variant='outlined'
+                  label="Always Open"
+                  variant="outlined"
                   style={{ marginRight: "4px" }}
                 />
               )}
@@ -122,11 +122,11 @@ const ResourceCard = (props) => {
             >
               {props.resource["Website"] && (
                 <a
-                  target='_blank'
+                  target="_blank"
                   href={props.resource["Website"]}
                   style={{ textDecoration: "none", marginRight: "4px" }}
                 >
-                  <Button size='small'>Website</Button>
+                  <Button size="small">Website</Button>
                 </a>
               )}
               {/* <Button size='small'>Learn More</Button> */}
