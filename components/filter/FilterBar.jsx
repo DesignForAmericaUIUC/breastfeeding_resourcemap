@@ -1,5 +1,12 @@
 import React, { useEffect } from "react";
-import { Box, IconButton, Tooltip, useTheme } from "@material-ui/core";
+import {
+  Box,
+  IconButton,
+  Tooltip,
+  useTheme,
+  Divider,
+  Typography,
+} from "@material-ui/core";
 import ClearIcon from "@material-ui/icons/Clear";
 
 import FilterMenu from "./FilterMenu";
@@ -26,39 +33,49 @@ const FilterBar = (props) => {
   return (
     <Box
       py={1}
-      px={5}
       style={{
         backgroundColor: "white",
         display: "flex",
-        flexDirection: "row",
         justifyContent: "left",
+        alignItems: "start",
       }}
     >
+      <Box display="flex" width="100%" justifyContent="space-between" pb={2}>
+        <Typography variant="h5">Filters</Typography>
+        {props.doFiltering && (
+          <Tooltip title="Clear Filters" arrow placement="top">
+            <IconButton
+              onClick={clearFilters}
+              disableRipple
+              style={{ padding: "0px", backgroundColor: "transparent" }}
+            >
+              <ClearIcon
+                style={{
+                  width: "32px",
+                  height: "32px",
+                  color: theme.palette.grey[500],
+                }}
+              />
+            </IconButton>
+          </Tooltip>
+        )}
+      </Box>
+
+      <Divider style={{ width: "100%" }} />
+
       {props.filters.map((e) => (
-        <FilterMenu
-          title={e.title}
-          options={e.options}
-          selectedOptions={e.selectedOptions}
-          setSelectedOptions={e.setSelectedOptions}
-        />
-      ))}
-      {props.doFiltering && (
-        <Tooltip title='Clear Filters' arrow placement='right'>
-          <IconButton
-            onClick={clearFilters}
-            disableRipple
-            style={{ padding: "0px", backgroundColor: "transparent" }}
-          >
-            <ClearIcon
-              style={{
-                width: "32px",
-                height: "32px",
-                color: theme.palette.grey[500],
-              }}
+        <>
+          <Box>
+            <FilterMenu
+              title={e.title}
+              options={e.options}
+              selectedOptions={e.selectedOptions}
+              setSelectedOptions={e.setSelectedOptions}
             />
-          </IconButton>
-        </Tooltip>
-      )}
+          </Box>
+          <Divider style={{ width: "100%" }} />
+        </>
+      ))}
     </Box>
   );
 };

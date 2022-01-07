@@ -63,34 +63,6 @@ const ResourceMap = (props) => {
 
   return (
     <Box style={{ position: "relative" }}>
-      <Box style={{ position: "absolute", top: "8px", right: "8px" }}>
-        {/* Longitude: {lng} | Latitude: {lat} | Zoom: {zoom} */}
-        {/* <IconButton
-          variant="contained"
-          onClick={() => setZoom(map.current.getZoom() + 1)}
-          style={{
-            padding: "4px",
-            marginRight: "8px",
-            backgroundColor: theme.palette.grey[300],
-            borderRadius: "8px",
-            boxShadow: "0 0 8px 4px rgba(0, 0, 0, 0.2)",
-          }}
-        >
-          <AddIcon />
-        </IconButton>
-        <IconButton
-          variant="contained"
-          onClick={() => setZoom(map.current.getZoom() - 1)}
-          style={{
-            padding: "4px",
-            backgroundColor: theme.palette.grey[300],
-            borderRadius: "8px",
-            boxShadow: "0 0 8px 4px rgba(0, 0, 0, 0.2)",
-          }}
-        >
-          <RemoveIcon />
-        </IconButton> */}
-      </Box>
       <Box
         style={{
           cursor: cursorStyle,

@@ -97,11 +97,6 @@ const Page = () => {
           />
         </Box>
       </Box>
-      <FilterBar
-        filters={filters}
-        doFiltering={doFiltering}
-        setDoFiltering={setDoFiltering}
-      />
       <Box
         mt={4}
         style={{
@@ -115,7 +110,28 @@ const Page = () => {
         <Paper
           elevation={0}
           style={{
-            width: "40%",
+            width: "15%",
+            minWidth: "250px",
+            height: "80vh",
+            overflow: "auto",
+            display: "flex",
+            justifyContent: "left",
+            flexDirection: "column",
+            backgroundColor: "white",
+            padding: "8px 40px",
+          }}
+        >
+          <FilterBar
+            filters={filters}
+            doFiltering={doFiltering}
+            setDoFiltering={setDoFiltering}
+          />
+        </Paper>
+        <Paper
+          elevation={0}
+          style={{
+            width: "35%",
+            minWidth: "400px",
             height: "80vh",
             overflow: "auto",
             display: "flex",
@@ -138,7 +154,7 @@ const Page = () => {
               resource["Resource-Name"] && <ResourceCard resource={resource} />
           )}
         </Paper>
-        <Box style={{ width: "60%", height: "80vh" }}>
+        <Box style={{ width: "50%", minWidth: "400px", height: "80vh" }}>
           <ResourceMap />
         </Box>
       </Box>

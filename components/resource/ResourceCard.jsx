@@ -39,7 +39,7 @@ const ResourceCard = (props) => {
       }}
       style={{ margin: "8px" }}
     >
-      <Card style={{ width: "500px", borderRadius: "16px" }}>
+      <Card style={{ width: "100%", borderRadius: "16px" }}>
         <CardMedia
           component="img"
           height="110"
