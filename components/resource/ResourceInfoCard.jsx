@@ -8,7 +8,7 @@ import {
   CardActions,
   Button,
   CardMedia,
-} from "@material-ui/core";
+} from "@mui/material";
 
 const ResourceInfoCard = (props) => {
   const theme = useTheme();
@@ -37,14 +37,14 @@ const ResourceInfoCard = (props) => {
         <CardContent>
           <Typography
             gutterBottom
-            variant='h5'
-            component='div'
+            variant="h5"
+            component="div"
             style={{ color: theme.palette.primary.main }}
           >
             {props.title}
           </Typography>
           <Typography
-            variant='body2'
+            variant="body2"
             style={{ color: theme.palette.text.secondary }}
           >
             {props.body}

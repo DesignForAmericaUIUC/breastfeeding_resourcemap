@@ -6,10 +6,10 @@ import {
   Divider,
   useTheme,
   OutlinedInput,
-} from "@material-ui/core";
+} from "@mui/material";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import SearchIcon from "@material-ui/icons/Search";
+import SearchIcon from "@mui/icons-material/Search";
 
 import NavBar from "../../components/nav/NavBar";
 import FilterBar from "../../components/filter/FilterBar";

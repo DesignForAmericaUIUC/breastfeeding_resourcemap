@@ -1,5 +1,5 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from "@mui/material/CssBaseline";
 import {
   Box,
   Button,
@@ -9,10 +9,10 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-} from "@material-ui/core";
+} from "@mui/material";
 import { useRouter } from "next/router";
 
-import MenuIcon from "@material-ui/icons/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
 
 import NavBar from "../components/nav/NavBar";
 
@@ -24,7 +24,7 @@ const Page = () => {
 
   return (
     <>
-      {/* <CssBaseline /> */}
+      <CssBaseline />
       <NavBar />
       {
         /* Do stuf */

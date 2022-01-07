@@ -6,8 +6,8 @@ import {
   useTheme,
   Divider,
   Typography,
-} from "@material-ui/core";
-import ClearIcon from "@material-ui/icons/Clear";
+} from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 
 import FilterMenu from "./FilterMenu";
 

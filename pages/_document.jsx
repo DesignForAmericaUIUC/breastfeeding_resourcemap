@@ -1,9 +1,11 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ServerStyleSheets } from "@material-ui/styles";
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import { ServerStyleSheets } from "@mui/styles";
+import { createMuiTheme, responsiveFontSizes } from "@mui/material/styles";
 
-const theme = responsiveFontSizes(createMuiTheme());
+import theme from "../theme";
+
+// const theme = responsiveFontSizes(createMuiTheme());
 
 class MyDocument extends Document {
   render() {

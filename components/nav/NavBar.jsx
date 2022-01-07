@@ -5,10 +5,10 @@ import {
   Grid,
   ButtonBase,
   IconButton,
-} from "@material-ui/core";
+} from "@mui/material";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import ClearIcon from "@material-ui/icons/Clear";
+import ClearIcon from "@mui/icons-material/Clear";
 
 import { toRouterString } from "./toRouterString";
 

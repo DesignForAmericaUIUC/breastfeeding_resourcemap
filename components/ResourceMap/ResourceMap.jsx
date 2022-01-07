@@ -1,11 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  useTheme,
-  Box,
-  Typography,
-  IconButton,
-  Button,
-} from "@material-ui/core";
+import { useTheme, Box, Typography, IconButton, Button } from "@mui/material";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import "mapbox-gl/dist/mapbox-gl.css";
 

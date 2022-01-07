@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Typography, useTheme, Paper, Grid } from "@material-ui/core";
-import { alpha } from "@material-ui/core/styles/colorManipulator";
+import { Box, Typography, useTheme, Paper, Grid } from "@mui/material";
 import { useRouter } from "next/router";
+import { alpha } from "@mui/material/styles";
 
 import NavBar from "../components/nav/NavBar";
 import FancyButton from "../components/FancyButton";
@@ -52,23 +52,23 @@ const Page = () => {
       <NavBar />
       <Paper style={styles.paperWithBGImg}>
         <Box
-          width='500px'
-          display='flex'
-          flexDirection='column'
-          justifyContent='center'
-          alignItems='center'
+          width="500px"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
         >
           <Typography
-            variant='h2'
-            align='center'
+            variant="h2"
+            align="center"
             gutterBottom
             style={{ color: "white" }}
           >
             Find breastfeeding resources near you
           </Typography>
           <Typography
-            variant='h5'
-            align='center'
+            variant="h5"
+            align="center"
             gutterBottom
             style={{ color: "white" }}
           >
@@ -76,7 +76,7 @@ const Page = () => {
             Illinois
           </Typography>
           <FancyButton
-            text='find resources'
+            text="find resources"
             onClick={() => {
               router.push("resource-map");
             }}
@@ -95,16 +95,16 @@ const Page = () => {
         }}
       >
         <Box
-          display='flex'
-          width='auto'
-          flexDirection='column'
-          justifyContent='center'
-          alignItems='center'
+          display="flex"
+          width="auto"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
         >
-          <Typography variant='h4' align='center'>
+          <Typography variant="h4" align="center">
             What kind of breastfeeding resources are available?
           </Typography>
-          <Typography variant='subtitle1' align='center' gutterBottom>
+          <Typography variant="subtitle1" align="center" gutterBottom>
             Learn more about what each resource category means on the resource
             map.
           </Typography>

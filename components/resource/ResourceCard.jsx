@@ -10,10 +10,10 @@ import {
   Chip,
   useTheme,
   ButtonBase,
-} from "@material-ui/core";
+} from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import CheckIcon from "@material-ui/icons/Check";
+import CheckIcon from "@mui/icons-material/Check";
 
 import { toRouterString } from "../nav/toRouterString";
 

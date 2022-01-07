@@ -1,4 +1,4 @@
-import { useTheme, Typography, ButtonBase } from "@material-ui/core";
+import { useTheme, Typography, ButtonBase } from "@mui/material";
 
 const FancyButton = (props) => {
   const theme = useTheme();
