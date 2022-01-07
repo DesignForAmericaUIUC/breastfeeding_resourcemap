@@ -3,6 +3,7 @@ import {
   Box,
   Typography,
   Paper,
+  Divider,
   useTheme,
   OutlinedInput,
 } from "@material-ui/core";
@@ -97,14 +98,17 @@ const Page = () => {
           />
         </Box>
       </Box>
+
       <Box
-        mt={4}
+        mt={8}
+        pt={0}
         style={{
           width: "100%",
           display: "flex",
           justifyContent: "left",
           flexDirection: "row",
           backgroundColor: "white",
+          borderTop: "1px solid lightgrey",
         }}
       >
         <Paper
@@ -112,13 +116,13 @@ const Page = () => {
           style={{
             width: "15%",
             minWidth: "250px",
-            height: "80vh",
+            height: "68vh",
             overflow: "auto",
             display: "flex",
             justifyContent: "left",
             flexDirection: "column",
             backgroundColor: "white",
-            padding: "8px 40px",
+            padding: "0px 40px",
           }}
         >
           <FilterBar
@@ -132,7 +136,7 @@ const Page = () => {
           style={{
             width: "35%",
             minWidth: "400px",
-            height: "80vh",
+            height: "68vh",
             overflow: "auto",
             display: "flex",
             justifyContent: "left",
@@ -154,7 +158,16 @@ const Page = () => {
               resource["Resource-Name"] && <ResourceCard resource={resource} />
           )}
         </Paper>
-        <Box style={{ width: "50%", minWidth: "400px", height: "80vh" }}>
+
+        <Box
+          style={{
+            width: "50%",
+            minWidth: "400px",
+            height: "68vh",
+            marginTop: 0,
+            paddingTop: 0,
+          }}
+        >
           <ResourceMap />
         </Box>
       </Box>

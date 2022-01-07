@@ -62,16 +62,14 @@ const ResourceMap = (props) => {
   const [cursorStyle, setCursorStyle] = useState("grab");
 
   return (
-    <Box style={{ position: "relative" }}>
-      <Box
-        style={{
-          cursor: cursorStyle,
-        }}
-        onMouseDown={() => setCursorStyle("grabbing")}
-        onMouseUp={() => setCursorStyle("grab")}
-      >
-        <div ref={mapContainer} style={{ height: "80vh" }} />
-      </Box>
+    <Box
+      style={{
+        cursor: cursorStyle,
+      }}
+      onMouseDown={() => setCursorStyle("grabbing")}
+      onMouseUp={() => setCursorStyle("grab")}
+    >
+      <div ref={mapContainer} style={{ height: "68vh" }} />
     </Box>
   );
 };

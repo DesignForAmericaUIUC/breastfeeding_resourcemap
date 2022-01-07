@@ -32,7 +32,7 @@ const FilterBar = (props) => {
 
   return (
     <Box
-      py={1}
+      py={0}
       style={{
         backgroundColor: "white",
         display: "flex",
@@ -40,7 +40,13 @@ const FilterBar = (props) => {
         alignItems: "start",
       }}
     >
-      <Box display="flex" width="100%" justifyContent="space-between" pb={2}>
+      <Box
+        display="flex"
+        width="100%"
+        justifyContent="space-between"
+        alignItems="center"
+        py={2}
+      >
         <Typography variant="h5">Filters</Typography>
         {props.doFiltering && (
           <Tooltip title="Clear Filters" arrow placement="top">
@@ -51,8 +57,8 @@ const FilterBar = (props) => {
             >
               <ClearIcon
                 style={{
-                  width: "32px",
-                  height: "32px",
+                  width: "28px",
+                  height: "28px",
                   color: theme.palette.grey[500],
                 }}
               />
@@ -65,7 +71,7 @@ const FilterBar = (props) => {
 
       {props.filters.map((e) => (
         <>
-          <Box>
+          <Box my={2}>
             <FilterMenu
               title={e.title}
               options={e.options}
