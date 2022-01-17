@@ -30,20 +30,25 @@ const Page = () => {
 
   const ResourceCardInfo = [
     {
-      title: "1",
-      body: "hello there",
+      
+      width: "auto",
+      title: "International Board of Lactation Consultant Examiners(IBLCE) ",
+      body:  <h4 style ={{ color: 'black' }}>IBLCE is valued worldwide for advancing global public health and is the most trusted source for credentialing practitioners in lactation and breastfeeding care</h4>,
+
     },
     {
-      title: "2",
-      body: "hello again",
+      
+      title: "Certified Lactation Counselor(CLC) ",
+      body: <h4 style ={{ color: 'black' }}>CLCs are dedicated to the promotion, protection, and support of breastfeeding and human lactation in their work to prevent and solve breastfeeding problems. They understand that breastfeeding works best when it is the cultural norm and when the provider of lactation support and services is culturally competent.</h4>,
+      
     },
     {
-      title: "3",
-      body: "hello number 3",
+      title: "Peer Counselor Program",
+      body:  <h4 style ={{ color: 'black' }}>Experienced parents who have personally gone through the breastfeeding journey themselves. new parents can get advice and support from trained peers, who are sure to give relevant and useful information.</h4>,
     },
     {
-      title: "4",
-      body: "hello number 4",
+      title: "Women, Infants, and Children Office",
+      body:  <h4 style ={{ color: 'black' }}>WIC support programs provide nutrtion education, supplemental food, healthcare referrals and breastfeeding support to low-income parents.</h4>,
     },
   ];
 
@@ -52,7 +57,7 @@ const Page = () => {
       <NavBar />
       <Paper style={styles.paperWithBGImg}>
         <Box
-          width="500px"
+          width="1000px"
           display="flex"
           flexDirection="column"
           justifyContent="center"
